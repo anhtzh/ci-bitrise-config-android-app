@@ -1,0 +1,259 @@
+  ██████╗ ██╗████████╗██████╗ ██╗███████╗███████╗
+  ██╔══██╗██║╚══██╔══╝██╔══██╗██║██╔════╝██╔════╝
+  ██████╔╝██║   ██║   ██████╔╝██║███████╗█████╗
+  ██╔══██╗██║   ██║   ██╔══██╗██║╚════██║██╔══╝
+  ██████╔╝██║   ██║   ██║  ██║██║███████║███████╗
+  ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
+
+  version: 1.21.0
+
+INFO[04:24:35] bitrise runs in CI mode           
+INFO[04:24:35] pattern (validation/with-ssh) triggered workflow (validation_workflow_with_ssh) 
+
+Switching to workflow: validation_workflow_with_ssh
+
+Fetched 2,443 kB in 2s (997 kB/s)
+
+INFO[04:24:49] Start installing (expect) with apt-get       
+INFO[04:24:49]  * [OK] Step dependency (expect) installed, available. 
+INFO[04:24:49] Start installing (git) with apt-get          
+INFO[04:24:49]  * [OK] Step dependency (git) installed, available. 
+
+# Configuration
+
+* Path to save the RSA SSH private key: */root/.ssh/steplib_ssh_step_id_rsa*
+* Should remove other identities from the ssh-agent? *true*
+-> $ mkdir -p /root/.ssh
+-> $ chmod 0600 /root/.ssh/steplib_ssh_step_id_rsa
+Could not open a connection to your authentication agent.
+ (i) ssh_agent_check_result: 2
+ (i) ssh-agent not started
+ (i) starting a new ssh-agent and exporting connection information with envman
+Agent pid 614
+ (i) Expose SSH_AUTH_SOCK for the new ssh-agent, with envman
+spawn ssh-add /root/.ssh/steplib_ssh_step_id_rsa
+Identity added: /root/.ssh/steplib_ssh_step_id_rsa (/root/.ssh/steplib_ssh_step_id_rsa)
+
+# Success
+
+The SSH key was saved to */root/.ssh/steplib_ssh_step_id_rsa*
+and was successfully added to ssh-agent.
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| ✓ | Activate App SSH key                                          | 13 sec   |
++---+---------------------------------------------------------------+----------+
+| Update available: 3.1.1 -> 4.0.2                                             |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (1) Git Clone Repository                                                     |
++------------------------------------------------------------------------------+
+| id: git-clone                                                                |
+| version: 3.4.3                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2018-08-20T04:24:54Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+INFO[04:24:54] Start installing (golang) with apt-get       
+INFO[04:24:54]  * [OK] Step dependency (go) installed, available. 
+
+Git Clone Configs:
+- CloneIntoDir: /bitrise/src
+- RepositoryURL: git@github.com:anhtzh/ci-bitrise-config-android-app.git
+Git Checkout Configs:
+- Commit: 
+- Tag: 
+- Branch: master
+- CloneDepth: 
+Git Pull Request Configs:
+- PullRequestURI: 
+- PullRequestID: 
+- BranchDest: 
+- PullRequestMergeBranch: 
+- ResetRepository: No
+Bitrise Build Configs:
+- BuildURL: 
+- BuildAPIToken: 
+
+Git clone repository
+=> git "init"
+=> git "remote" "add" "origin" "git@github.com:anhtzh/ci-bitrise-config-android-app.git"
+=> git "fetch"
+=> git "checkout" "master"
+=> git "submodule" "update" "--init" "--recursive"
+Exporting git logs
+=> GIT_CLONE_COMMIT_HASH
+   value: 7bb6be8d21731fbc605ffc8059e19c83a56fb3b7
+
+=> GIT_CLONE_COMMIT_MESSAGE_SUBJECT
+   value: Init project
+
+=> GIT_CLONE_COMMIT_MESSAGE_BODY
+   value: 
+
+=> GIT_CLONE_COMMIT_AUTHOR_NAME
+   value: Tran Anh
+
+=> GIT_CLONE_COMMIT_AUTHOR_EMAIL
+   value: anh.tran@quoine.com
+
+=> GIT_CLONE_COMMIT_COMMITER_NAME
+   value: Tran Anh
+
+=> GIT_CLONE_COMMIT_COMMITER_EMAIL
+   value: anh.tran@quoine.com
+
+Success
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| ✓ | Git Clone Repository                                          | 14 sec   |
++---+---------------------------------------------------------------+----------+
+| Update available: 3.4.3 -> 4.0.11                                            |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
+INFO[04:25:04] Step uses latest version -- Updating StepLib ... 
+INFO[04:25:04] Update StepLib (https://github.com/bitrise-io/bitrise-steplib.git)... 
++------------------------------------------------------------------------------+
+| (2) Running project scanner                                                  |
++------------------------------------------------------------------------------+
+| id: project-scanner                                                          |
+| version: 1.6.4                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: bash                                                                |
+| time: 2018-08-20T04:25:12Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+
+Configs:
+  * scan_dir: /bitrise/src
+  * output_dir: /bitrise/src/scan_result
+  * scan_result_submit_url: https://app.bitrise.io/api/validation/a35a815c23df85f2/scan_results
+  * scan_result_submit_api_token: 01MJT7cMbJA3HRQpPBMvJA
+
+
+Create scanner bin...
+  ceated at: /tmp/tmp.BkWtJ9H7wH/scanner
+
+Running scanner...
+[04:25:21] CI mode
+[04:25:21] scan dir: /bitrise/src
+[04:25:21] output dir: /bitrise/src/scan_result
+[04:25:21] output format: json
+
+[04:25:21] Running scanners:
+
+[04:25:21] Scanner: react-native
+[04:25:21] +------------------------------------------------------------------------------+
+[04:25:21] |                                                                              |
+[04:25:21] Collect package.json files
+[04:25:21] 0 package.json file detected
+[04:25:21] Filter relevant package.json files
+[04:25:21] |                                                                              |
+[04:25:21] +------------------------------------------------------------------------------+
+
+[04:25:21] Scanner: ionic
+[04:25:21] +------------------------------------------------------------------------------+
+[04:25:21] |                                                                              |
+[04:25:21] Searching for config.xml file
+[04:25:21] config.xml: 
+[04:25:21] platform not detected
+[04:25:21] |                                                                              |
+[04:25:21] +------------------------------------------------------------------------------+
+
+[04:25:21] Scanner: cordova
+[04:25:21] +------------------------------------------------------------------------------+
+[04:25:21] |                                                                              |
+[04:25:21] Searching for config.xml file
+[04:25:21] config.xml: 
+[04:25:21] platform not detected
+[04:25:21] |                                                                              |
+[04:25:21] +------------------------------------------------------------------------------+
+
+[04:25:21] Scanner: ios
+[04:25:21] +------------------------------------------------------------------------------+
+[04:25:21] |                                                                              |
+[04:25:21] Filter relevant Xcode project files
+[04:25:21] 0 Xcode ios project files found
+[04:25:21] platform not detected
+[04:25:21] |                                                                              |
+[04:25:21] +------------------------------------------------------------------------------+
+
+[04:25:21] Scanner: macos
+[04:25:21] +------------------------------------------------------------------------------+
+[04:25:21] |                                                                              |
+[04:25:21] Filter relevant Xcode project files
+[04:25:21] 0 Xcode macos project files found
+[04:25:21] platform not detected
+[04:25:21] |                                                                              |
+[04:25:21] +------------------------------------------------------------------------------+
+
+[04:25:21] Scanner: android
+[04:25:21] +------------------------------------------------------------------------------+
+[04:25:21] |                                                                              |
+[04:26:58] |                                                                              |
+[04:26:58] +------------------------------------------------------------------------------+
+
+[04:26:58] Scanner: xamarin
+[04:26:58] +------------------------------------------------------------------------------+
+[04:26:58] |                                                                              |
+[04:26:58] Searching for solution files
+[04:26:58] 0 solution files detected
+[04:26:58] platform not detected
+[04:26:58] |                                                                              |
+[04:26:58] +------------------------------------------------------------------------------+
+
+[04:26:58] Scanner: fastlane
+[04:26:58] +------------------------------------------------------------------------------+
+[04:26:58] |                                                                              |
+[04:26:58] Searching for Fastfiles
+[04:26:58] 0 Fastfiles detected
+[04:26:58] platform not detected
+[04:26:58] |                                                                              |
+[04:26:58] +------------------------------------------------------------------------------+
+
+[04:26:58] Saving outputs:
+[04:26:58]   scan result: /bitrise/src/scan_result/result.json
+
+Submitting results...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0{"status":"ok"}
+100  6542    0    15  100  6527     34  15132 --:--:-- --:--:-- --:--:-- 15143
+
+  submitted
+
+  scan finished
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| ✓ | Running project scanner                                       | 115 sec  |
++---+---------------------------------------------------------------+----------+
+
+
++------------------------------------------------------------------------------+
+|                               bitrise summary                                |
++---+---------------------------------------------------------------+----------+
+|   | title                                                         | time (s) |
++---+---------------------------------------------------------------+----------+
+| ✓ | Activate App SSH key                                          | 13 sec   |
++---+---------------------------------------------------------------+----------+
+| Update available: 3.1.1 -> 4.0.2                                             |
++---+---------------------------------------------------------------+----------+
+| ✓ | Git Clone Repository                                          | 14 sec   |
++---+---------------------------------------------------------------+----------+
+| Update available: 3.4.3 -> 4.0.11                                            |
++---+---------------------------------------------------------------+----------+
+| ✓ | Running project scanner                                       | 115 sec  |
++---+---------------------------------------------------------------+----------+
+| Total runtime: 143 sec                                                       |
++------------------------------------------------------------------------------+
+
+
+Submitting anonymized usage informations...
+For more information visit:
+https://github.com/bitrise-core/bitrise-plugins-analytics/blob/master/README.md
