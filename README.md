@@ -1,4 +1,4 @@
-# ci-bitrise-config-android-app
+# CI Bitrise first try
 
 https://devcenter.bitrise.io/bitrise-cli/basics-of-bitrise-yml/
 
